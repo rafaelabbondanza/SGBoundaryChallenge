@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SGBoundaryChallenge
 {
-    class Util
+    public class Util
     {
         public static bool[,] InputToMatrix(string input)
         {

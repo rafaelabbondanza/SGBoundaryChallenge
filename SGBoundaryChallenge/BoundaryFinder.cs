@@ -2,7 +2,7 @@
 
 namespace SGBoundaryChallenge
 {
-    class BoundaryFinder
+    public class BoundaryFinder
     {
         public Boundaries FindBoundaries(bool[,] blob, int size)
         {
@@ -95,17 +95,25 @@ namespace SGBoundaryChallenge
         {
             Queue<GridCell> q = new Queue<GridCell>();
 
+
             int mid = grid.Size / 2;
             GridCell first = new GridCell(mid, mid);
 
-            q.Enqueue(first);
+            if (!grid.HasBeenVisited(first.I, first.J))
+            {
+                if (grid.Visit(first.I, first.J))
+                {
+                    return first;
+                }
+                q.Enqueue(first);
+            }
 
             while (q.Count > 0)
             {
                 GridCell current = q.Dequeue();
                 List<GridCell> toVisit = GetSurroundingCells(grid, current);
 
-                foreach(GridCell cell in toVisit)
+                foreach (GridCell cell in toVisit)
                 {
                     if (!grid.HasBeenVisited(cell.I, cell.J))
                     {

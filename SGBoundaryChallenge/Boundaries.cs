@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SGBoundaryChallenge
 {
-    class Boundaries
+    public class Boundaries
     {
         public int Top
         {
